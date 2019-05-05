@@ -1,0 +1,21 @@
+mysql:
+  uri: mysql://root:123@localhost:3306/test
+  query: SELECT 1
+  timeout: 0.01
+  expectation:
+    - type: ROWS
+      value: 2
+    - type: LATENCY
+      threshold: 1000
+  allowed_fails: 0
+cachet:
+  api_url: https://demo.cachethq.io/api/v1
+  token: my_token
+  component_id: 1
+  #metric_id: 1
+  action:
+    - CREATE_INCIDENT
+    - UPDATE_STATUS
+  public_incidents: true
+  latency_unit: ms
+frequency: 30

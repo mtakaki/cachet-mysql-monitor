@@ -1,0 +1,15 @@
+[package]
+name = "cachet-mysql-monitor"
+version = "0.0.1"
+authors = ["Mitsuo Takaki <mitsuotakaki@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+yaml-rust = "0.4"
+clokwerk = "0.1.0"
+mysql = "15.1.0"
+log = "0.4.6"
+reqwest = "0.9.14"
+
+[dev-dependencies]
+indoc = "0.3"
