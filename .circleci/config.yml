@@ -8,13 +8,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install rustfmt
-          command: |
-            mv /root/.cargo/bin/rustfmt /usr/local/bin
-      - run:
           name: Check formatting
           command: |
-            rustfmt --version
+            /root/.cargo/bin/rustfmt --version
             cargo fmt -- --write-mode=diff
       - run:
           name: Calculate dependencies
