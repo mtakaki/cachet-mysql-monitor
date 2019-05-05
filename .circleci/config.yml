@@ -10,7 +10,6 @@ jobs:
       - run:
           name: Install rustfmt
           command: |
-            cargo install --git https://github.com/rust-lang/rustfmt
             mv /root/.cargo/bin/rustfmt /usr/local/bin
       - run:
           name: Check formatting
