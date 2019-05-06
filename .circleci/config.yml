@@ -9,12 +9,12 @@ jobs:
       - checkout
       - run:
           name: Install rustfmt
-          command: rustup component add rustfmt --toolchain 1.34.1-x86_64-unknown-linux-gnu
+          command: rustup component add rustfmt
       - run:
           name: Check formatting
           command: |
             rustfmt --version
-            cargo fmt -- --write-mode=diff
+            cargo fmt --all -- --check
       - run:
           name: Calculate dependencies
           command: cargo generate-lockfile
