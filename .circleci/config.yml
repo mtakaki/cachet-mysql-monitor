@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Check formatting
           command: |
-            /root/.cargo/bin/rustfmt --version
+            rustfmt --version
             cargo fmt -- --write-mode=diff
       - run:
           name: Calculate dependencies
