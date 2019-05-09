@@ -121,20 +121,22 @@ cachet:
         );
     }
 
+    /// Will parse the given str reference (yaml string) and verify it matches the given expected_latency.
+    ///
+    /// # Arguments
+    /// * `yaml_string` - The yaml string that should represent a cachethq configuration, including the latency_unit.
+    /// * `expected_latency` - The expected LatencyUnit enum, extracted from the yaml string.
     fn assert_latency(yaml_string: &str, expected_latency: LatencyUnit) {
-        /// Will parse the given str reference (yaml string) and verify it matches the given expected_latency.
-        ///
-        /// # Arguments
-        /// * `yaml_string` - The yaml string that should represent a cachethq configuration, including the latency_unit.
-        /// * `expected_latency` - The expected LatencyUnit enum, extracted from the yaml string.
         let docs = YamlLoader::load_from_str(yaml_string).unwrap();
-        let latency = parse_latency(&docs[0]);
-        match latency {
-            expected_latency => println!("Success"), // nothing do
-            _ => panic!(
+        let parsed_latency = parse_latency(&docs[0]);
+        if let expected_latency = parsed_latency {
+            println!("Success");
+
+        } else {
+            panic!(
                 "parse_latency() should return {:?}. Got: {:?}",
-                &expected_latency, &latency
-            ),
-        };
+                &expected_latency, &parsed_latency
+            );
+        }
     }
 }

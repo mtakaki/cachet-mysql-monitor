@@ -128,12 +128,12 @@ mysql:
         );
     }
 
+    /// Will parse the given str reference (yaml string) and verify it matches the given expected_expectation.
+    ///
+    /// # Arguments
+    /// * `yaml_string` - The yaml string that should represent the mysql configuration, including the expectation array.
+    /// * `expected_expectation` - The expected Expectation enum, extracted from the yaml string.
     fn assert_expectation(yaml_string: &str, expected_expectation: Option<Expectation>) {
-        /// Will parse the given str reference (yaml string) and verify it matches the given expected_expectation.
-        ///
-        /// # Arguments
-        /// * `yaml_string` - The yaml string that should represent the mysql configuration, including the expectation array.
-        /// * `expected_expectation` - The expected Expectation enum, extracted from the yaml string.
         let docs = YamlLoader::load_from_str(yaml_string).unwrap();
         let expectations = parse_expectations(&docs[0]);
         match expected_expectation {
@@ -142,13 +142,13 @@ mysql:
         }
     }
 
+    /// Will parse the given str reference (yaml string) and verify if each one of the expectations in the vector
+    /// are contained inside the parsed expectations.
+    ///
+    /// # Arguments
+    /// * `yaml_string` - The yaml string that should represent the mysql configuration, including the expectation array.
+    /// * `expected_expectation_vector` - The expected Expectation enum vector, extracted from the yaml string.
     fn assert_expectations(yaml_string: &str, expected_expectation_vector: Vec<Expectation>) {
-        /// Will parse the given str reference (yaml string) and verify if each one of the expectations in the vector
-        /// are contained inside the parsed expectations.
-        ///
-        /// # Arguments
-        /// * `yaml_string` - The yaml string that should represent the mysql configuration, including the expectation array.
-        /// * `expected_expectation_vector` - The expected Expectation enum vector, extracted from the yaml string.
         let docs = YamlLoader::load_from_str(yaml_string).unwrap();
         let expectations = parse_expectations(&docs[0]);
         for expected_expectation in expected_expectation_vector {

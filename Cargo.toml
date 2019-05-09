@@ -5,6 +5,7 @@ authors = ["Mitsuo Takaki <mitsuotakaki@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+openssl = { version = "0.10.21", features = ["vendored"] }
 yaml-rust = "0.4"
 clokwerk = "0.1.0"
 mysql = "15.1.0"
