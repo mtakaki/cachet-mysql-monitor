@@ -131,7 +131,6 @@ cachet:
         let parsed_latency = parse_latency(&docs[0]);
         if let expected_latency = parsed_latency {
             println!("Success");
-
         } else {
             panic!(
                 "parse_latency() should return {:?}. Got: {:?}",
