@@ -1,6 +1,7 @@
 use yaml_rust::Yaml;
 
 #[derive(Debug)]
+#[derive(PartialEq)]
 pub enum LatencyUnit {
     Minutes,
     Seconds,
@@ -129,7 +130,7 @@ cachet:
     fn assert_latency(yaml_string: &str, expected_latency: LatencyUnit) {
         let docs = YamlLoader::load_from_str(yaml_string).unwrap();
         let parsed_latency = parse_latency(&docs[0]);
-        if let expected_latency = parsed_latency {
+        if expected_latency == parsed_latency {
             println!("Success");
         } else {
             panic!(
