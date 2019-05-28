@@ -1,3 +1,6 @@
+#[cfg(test)]
+use mockito;
+
 /// Updates the component status in CachetHQ and returns the result, if it was successful or not.
 ///
 /// # Arguments
@@ -20,14 +23,13 @@ pub fn update_status(cachet_hq: super::mysql_monitor::CachetHQ, status: u8) -> b
 }
 
 #[cfg(test)]
-use mockito;
-
-#[cfg(test)]
 mod tests {
-    use super::*;
     use mockito::mock;
-    use crate::mysql_monitor::mysql_monitor::CachetHQ;
+
     use crate::mysql_monitor::latency_unit::LatencyUnit;
+    use crate::mysql_monitor::mysql_monitor::CachetHQ;
+
+    use super::*;
 
     #[test]
     fn test_update_status() {

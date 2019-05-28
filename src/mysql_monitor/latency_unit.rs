@@ -1,7 +1,6 @@
 use yaml_rust::Yaml;
 
-#[derive(Debug)]
-#[derive(PartialEq)]
+#[derive(Debug, PartialEq)]
 pub enum LatencyUnit {
     Minutes,
     Seconds,
@@ -33,9 +32,10 @@ pub fn parse_latency(doc: &Yaml) -> LatencyUnit {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
     use indoc::indoc;
     use yaml_rust::YamlLoader;
+
+    use super::*;
 
     #[test]
     fn test_minutes_convert_to_millis() {
