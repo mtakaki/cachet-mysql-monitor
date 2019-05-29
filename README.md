@@ -1,6 +1,7 @@
 # Status
 [![CircleCI](https://circleci.com/gh/mtakaki/cachet-mysql-monitor.svg?style=svg)](https://circleci.com/gh/mtakaki/cachet-mysql-monitor)
 ![License](https://img.shields.io/github/license/mtakaki/cachet-mysql-monitor.svg)
+[![](https://images.microbadger.com/badges/image/mtakaki/cachet-mysql-monitor.svg)](https://microbadger.com/images/mtakaki/cachet-mysql-monitor "Get your own image badge on microbadger.com")
 
 cachet-mysql-monitor
 ========================
