@@ -54,4 +54,28 @@ mod tests {
         };
         assert!(update_status(cachet_hq, 0));
     }
+
+    #[test]
+    fn test_update_status_not_found() {
+        let url = &mockito::server_url();
+
+        // Mocking the HTTP request.
+        let _m = mock("PUT", "/components/1")
+            .with_status(404)
+            .with_header("Content-Type", "application/x-www-form-urlencoded")
+            .with_header("X-Cachet-Token", "1234")
+            .with_body("id=1&status=0")
+            .create();
+
+        let cachet_hq = CachetHQ {
+            component_id: 1,
+            token: "1234".to_string(),
+            api_url: url.to_string(),
+            latency_unit: LatencyUnit::Milliseconds,
+            public_incidents: false,
+            action: Vec::new(),
+            metric_id: Some(3),
+        };
+        assert!(!update_status(cachet_hq, 0));
+    }
 }
